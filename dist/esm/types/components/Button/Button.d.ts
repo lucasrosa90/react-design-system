@@ -1,3 +1,4 @@
 /// <reference types="react" />
-declare const Button: React.FC;
-export default Button;
+import { ButtonProps } from './Button.types';
+declare const _default: import("react").NamedExoticComponent<ButtonProps>;
+export default _default;

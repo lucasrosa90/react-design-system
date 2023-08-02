@@ -26,5 +26,17 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag"
   },
+  webpackFinal(config, options) {
+    const fileLoaderRule: any = config.module?.rules?.find((rule: any) => rule?.test && rule?.test?.test('.svg'));
+    fileLoaderRule.exclude = /\.(svg)$/;
+
+    config.module?.rules?.push({
+      test: /\.svg$/,
+      // use: ['@svgr/webpack']
+      enforce: 'pre',
+      loader: require.resolve('@svgr/webpack'),
+    });
+    return config;
+  },
 };
 export default config;
